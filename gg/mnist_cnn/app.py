@@ -45,3 +45,31 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
+'''from flask import Flask, render_template, request
+from tensorflow.keras.preprocessing.image import load_img,img_to_array
+from tensorflow.keras.models import load_model
+
+model = load_model("model.h5")
+
+app = Flask(__name__)
+
+def preprocessing(image):
+    image = load_img(image,target_size=(28,28),color_mode = 'greyscale')
+    image = img_to_array(image)
+    image = image.reshaper(1,28,28,1)
+    image = image.astype('float32')/255.0
+    return image
+
+@app.route('/', methods = ['POST','GET'])
+def home():
+    return render_template(home.html)
+
+@app.route("/prediciton", methods = ["POST"])
+def predictions():
+    img = request.files['img']
+    img = preprocessing(img)
+    result = model.predict(img)
+    return render_template(result.html,result = result)
+
+app.run(debug = True)'''
